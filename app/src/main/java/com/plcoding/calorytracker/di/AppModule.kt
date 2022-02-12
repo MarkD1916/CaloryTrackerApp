@@ -23,7 +23,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providePreferences(sharedPreferences: SharedPreferences): Preferences{
+    fun providePreferences(sharedPreferences: SharedPreferences): DefaultPreferences{
         return DefaultPreferences(sharedPreferences)
     }
 }
