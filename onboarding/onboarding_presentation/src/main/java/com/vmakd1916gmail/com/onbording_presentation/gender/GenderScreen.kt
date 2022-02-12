@@ -45,6 +45,7 @@ fun GenderScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
+                "sdfdsfdf"
                 text = stringResource(id = R.string.whats_your_gender),
                 style = MaterialTheme.typography.h3
             )
