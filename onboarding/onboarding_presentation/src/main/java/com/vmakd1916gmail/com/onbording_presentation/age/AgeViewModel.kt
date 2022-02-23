@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vmakd1916gmail.com.core.data.preferences.DefaultPreferences
-import com.vmakd1916gmail.com.core.domain.model.Gender
 import com.vmakd1916gmail.com.core.navigation.Route
 import com.vmakd1916gmail.com.core.use_case.FilterOutDigits
 import com.vmakd1916gmail.com.core.util.UiEvent
@@ -16,7 +15,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import java.util.prefs.Preferences
 import javax.inject.Inject
 
 @HiltViewModel
