@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.height
+package com.vmakd1916gmail.com.onboarding_presentation.weight
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -14,15 +14,15 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.vmakd1916gmail.com.core.R
 import com.vmakd1916gmail.com.core.util.UiEvent
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
-import com.vmakd1916gmail.com.onbording_presentation.components.ActionButton
-import com.vmakd1916gmail.com.onbording_presentation.components.UnitTextField
+import com.vmakd1916gmail.com.onboarding_presentation.components.ActionButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.UnitTextField
 import kotlinx.coroutines.flow.collect
 
 @Composable
-fun HeightScreen(
+fun WeightScreen(
     scaffoldState: ScaffoldState,
     onNavigate: (UiEvent.Navigate) -> Unit,
-    viewModel: HeightViewModel = hiltViewModel()
+    viewModel: WeightViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     val context = LocalContext.current
@@ -42,7 +42,7 @@ fun HeightScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceExtraLarge)
+            .padding(spacing.spaceLarge)
     ) {
         Column(
             modifier = Modifier
@@ -51,15 +51,15 @@ fun HeightScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.whats_your_height),
+                text = stringResource(id = R.string.whats_your_weight),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
-                value = viewModel.height,
-                onValueChange = viewModel::onHeightEnter,
+                value = viewModel.weight,
+                onValueChange = viewModel::onWeightEnter,
                 unit = stringResource(
-                    id = R.string.cm
+                    id = R.string.kg
                 )
             )
         }

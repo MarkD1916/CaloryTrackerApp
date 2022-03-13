@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.components
+package com.vmakd1916gmail.com.onboarding_presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

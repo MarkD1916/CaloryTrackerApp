@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.components
+package com.vmakd1916gmail.com.onboarding_presentation.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

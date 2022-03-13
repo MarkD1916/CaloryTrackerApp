@@ -1,9 +1,8 @@
-package com.vmakd1916gmail.com.onbording_presentation.height
+package com.vmakd1916gmail.com.onboarding_presentation.age
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.vmakd1916gmail.com.core.data.preferences.DefaultPreferences
@@ -19,35 +18,35 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HeightViewModel @Inject constructor(
+class AgeViewModel @Inject constructor(
     private val preferences: DefaultPreferences,
     private val filterOutDigits: FilterOutDigits
 ) : ViewModel() {
 
-    var height by mutableStateOf("175")
+    var age by mutableStateOf("20")
         private set
 
     private val _uiEvent = Channel<UiEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onHeightEnter(height: String) {
-        if (height.length <= 3) {
-            this.height = filterOutDigits.invoke(height)
+    fun onAgeEnter(age: String) {
+        if (age.length <= 2) {
+            this.age = filterOutDigits.invoke(age)
         }
     }
 
     fun onNextClick() {
         viewModelScope.launch {
-            val heightNumber = height.toIntOrNull() ?: kotlin.run {
+            val ageNumber = age.toIntOrNull() ?: kotlin.run {
                 _uiEvent.send(
                     UiEvent.ShowSnackBar(
-                        UiText.StringResource(R.string.error_height_cant_be_empty)
+                        UiText.StringResource(R.string.error_age_cant_be_empty)
                     )
                 )
                 return@launch
             }
-            preferences.saveHeight(heightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+            preferences.saveAge(ageNumber)
+            _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
         }
     }
 }

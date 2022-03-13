@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.age
+package com.vmakd1916gmail.com.onboarding_presentation.height
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -8,25 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.vmakd1916gmail.com.core.R
 import com.vmakd1916gmail.com.core.util.UiEvent
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
-import com.vmakd1916gmail.com.core.R
-import com.vmakd1916gmail.com.core.domain.model.Gender
-import com.vmakd1916gmail.com.onbording_presentation.components.ActionButton
-import com.vmakd1916gmail.com.onbording_presentation.components.SelectableButton
-import com.vmakd1916gmail.com.onbording_presentation.components.UnitTextField
+import com.vmakd1916gmail.com.onboarding_presentation.components.ActionButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.UnitTextField
 import kotlinx.coroutines.flow.collect
 
 @Composable
-fun AgeScreen(
+fun HeightScreen(
     scaffoldState: ScaffoldState,
     onNavigate: (UiEvent.Navigate) -> Unit,
-    viewModel: AgeViewModel = hiltViewModel()
+    viewModel: HeightViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     val context = LocalContext.current
@@ -46,7 +42,7 @@ fun AgeScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceExtraLarge)
+            .padding(spacing.spaceLarge)
     ) {
         Column(
             modifier = Modifier
@@ -55,15 +51,15 @@ fun AgeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.whats_your_age),
+                text = stringResource(id = R.string.whats_your_height),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
-                value = viewModel.age,
-                onValueChange = viewModel::onAgeEnter,
+                value = viewModel.height,
+                onValueChange = viewModel::onHeightEnter,
                 unit = stringResource(
-                    id = R.string.years
+                    id = R.string.cm
                 )
             )
         }

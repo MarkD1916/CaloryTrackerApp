@@ -1,13 +1,15 @@
-package com.vmakd1916gmail.com.onbording_presentation.gender
+package com.vmakd1916gmail.com.onboarding_presentation.age
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ScaffoldState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -15,20 +17,28 @@ import com.vmakd1916gmail.com.core.util.UiEvent
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
 import com.vmakd1916gmail.com.core.R
 import com.vmakd1916gmail.com.core.domain.model.Gender
-import com.vmakd1916gmail.com.onbording_presentation.components.ActionButton
-import com.vmakd1916gmail.com.onbording_presentation.components.SelectableButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.ActionButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.SelectableButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.UnitTextField
 import kotlinx.coroutines.flow.collect
 
 @Composable
-fun GenderScreen(
+fun AgeScreen(
+    scaffoldState: ScaffoldState,
     onNavigate: (UiEvent.Navigate) -> Unit,
-    viewModel: GenderViewModel = hiltViewModel()
+    viewModel: AgeViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
+    val context = LocalContext.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
                 is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.ShowSnackBar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message.asString(context)
+                    )
+                }
                 else -> Unit
             }
         }
@@ -36,7 +46,7 @@ fun GenderScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceExtraLarge)
+            .padding(spacing.spaceLarge)
     ) {
         Column(
             modifier = Modifier
@@ -45,37 +55,17 @@ fun GenderScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.whats_your_gender),
+                text = stringResource(id = R.string.whats_your_age),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
-            Row {
-                SelectableButton(
-                    text = stringResource(id = R.string.male),
-                    isSelected = viewModel.selectedGender is Gender.Male,
-                    color = MaterialTheme.colors.primaryVariant,
-                    selectedTextColor = Color.White,
-                    onClick = {
-                        viewModel.onGenderClick(Gender.Male)
-                    },
-                    textStyle = MaterialTheme.typography.button.copy(
-                        fontWeight = FontWeight.Normal
-                    )
+            UnitTextField(
+                value = viewModel.age,
+                onValueChange = viewModel::onAgeEnter,
+                unit = stringResource(
+                    id = R.string.years
                 )
-                Spacer(modifier = Modifier.width(spacing.spaceMedium))
-                SelectableButton(
-                    text = stringResource(id = R.string.female),
-                    isSelected = viewModel.selectedGender is Gender.Female,
-                    color = MaterialTheme.colors.primaryVariant,
-                    selectedTextColor = Color.White,
-                    onClick = {
-                        viewModel.onGenderClick(Gender.Female)
-                    },
-                    textStyle = MaterialTheme.typography.button.copy(
-                        fontWeight = FontWeight.Normal
-                    )
-                )
-            }
+            )
         }
         ActionButton(
             text = stringResource(id = R.string.next),

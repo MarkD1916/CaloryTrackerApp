@@ -14,10 +14,14 @@ import androidx.navigation.compose.rememberNavController
 import com.plcoding.calorytracker.navigation.navigate
 import com.plcoding.calorytracker.ui.theme.CaloryTrackerTheme
 import com.vmakd1916gmail.com.core.navigation.Route
-import com.vmakd1916gmail.com.onbording_presentation.age.AgeScreen
-import com.vmakd1916gmail.com.onbording_presentation.gender.GenderScreen
-import com.vmakd1916gmail.com.onbording_presentation.weight.WeightScreen
-import com.vmakd1916gmail.com.onbording_presentation.welcome.WelcomeScreen
+import com.vmakd1916gmail.com.onboarding_presentation.activity_level.ActivityLevelScreen
+import com.vmakd1916gmail.com.onboarding_presentation.age.AgeScreen
+import com.vmakd1916gmail.com.onboarding_presentation.gender.GenderScreen
+import com.vmakd1916gmail.com.onboarding_presentation.goal.GoalScreen
+import com.vmakd1916gmail.com.onboarding_presentation.height.HeightScreen
+import com.vmakd1916gmail.com.onboarding_presentation.nutrient_goal.NutrientGoalScreen
+import com.vmakd1916gmail.com.onboarding_presentation.weight.WeightScreen
+import com.vmakd1916gmail.com.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,7 +53,10 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
-
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.WEIGHT) {
                             WeightScreen(
@@ -58,13 +65,14 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate)
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityLevelScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.TRACKER_OVERVIEW) {
 

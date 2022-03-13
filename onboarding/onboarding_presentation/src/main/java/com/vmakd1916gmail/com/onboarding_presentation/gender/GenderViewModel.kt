@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.gender
+package com.vmakd1916gmail.com.onboarding_presentation.gender
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

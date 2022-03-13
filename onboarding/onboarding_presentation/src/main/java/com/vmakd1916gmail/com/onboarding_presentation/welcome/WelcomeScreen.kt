@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.welcome
+package com.vmakd1916gmail.com.onboarding_presentation.welcome
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -12,7 +12,7 @@ import com.vmakd1916gmail.com.core.R
 import com.vmakd1916gmail.com.core.navigation.Route
 import com.vmakd1916gmail.com.core.util.UiEvent
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
-import com.vmakd1916gmail.com.onbording_presentation.components.ActionButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.ActionButton
 
 
 @Composable

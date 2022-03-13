@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.activity_level
+package com.vmakd1916gmail.com.onboarding_presentation.activity_level
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -16,8 +16,8 @@ import com.vmakd1916gmail.com.core_ui.LocalSpacing
 import com.vmakd1916gmail.com.core.R
 import com.vmakd1916gmail.com.core.domain.model.ActivityLevel
 import com.vmakd1916gmail.com.core.domain.model.Gender
-import com.vmakd1916gmail.com.onbording_presentation.components.ActionButton
-import com.vmakd1916gmail.com.onbording_presentation.components.SelectableButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.ActionButton
+import com.vmakd1916gmail.com.onboarding_presentation.components.SelectableButton
 import kotlinx.coroutines.flow.collect
 
 @Composable
@@ -37,7 +37,7 @@ fun ActivityLevelScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceSmall)
+            .padding(spacing.spaceLarge)
     ) {
         Column(
             modifier = Modifier

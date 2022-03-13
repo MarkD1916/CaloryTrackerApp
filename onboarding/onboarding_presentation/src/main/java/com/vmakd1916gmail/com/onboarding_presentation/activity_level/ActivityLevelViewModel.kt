@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.activity_level
+package com.vmakd1916gmail.com.onboarding_presentation.activity_level
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -33,7 +33,7 @@ class ActivityLevelViewModel @Inject constructor(
     fun onNextClick(){
         viewModelScope.launch {
             preferences.saveActivityLevel(selectedActivityLevel)
-            _uiEvent.send(UiEvent.Navigate(Route.AGE))
+            _uiEvent.send(UiEvent.Navigate(Route.GOAL))
         }
     }
 }

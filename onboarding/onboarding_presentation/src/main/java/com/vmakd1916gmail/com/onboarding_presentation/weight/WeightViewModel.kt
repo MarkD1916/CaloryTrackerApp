@@ -1,4 +1,4 @@
-package com.vmakd1916gmail.com.onbording_presentation.weight
+package com.vmakd1916gmail.com.onboarding_presentation.weight
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
