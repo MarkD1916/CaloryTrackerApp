@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class TrackedFoodEntity(
     val name: String,
-    val crabs: Int,
+    val carbs: Int,
     val fat: Int,
     val protein: Int,
     val imageUrl: String?,
