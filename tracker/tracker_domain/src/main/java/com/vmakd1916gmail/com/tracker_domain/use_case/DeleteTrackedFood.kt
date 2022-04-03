@@ -3,7 +3,7 @@ package com.vmakd1916gmail.com.tracker_domain.use_case
 import com.vmakd1916gmail.com.tracker_domain.model.TrackedFood
 import com.vmakd1916gmail.com.tracker_domain.repository.TrackerRepository
 
-class DeletedTrackedFood(
+class DeleteTrackedFood(
     private val repository: TrackerRepository
 ) {
 
