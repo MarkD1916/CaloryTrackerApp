@@ -8,20 +8,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import com.plcoding.calorytrackerprep.ui.theme.Typography
+import com.plcoding.core_ui.*
 import com.vmakd1916gmail.com.core_ui.Dimensions
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
 
-private val DarkColorPalette = darkColors(
-    primary = BrightGreen,
-    primaryVariant = DarkGreen,
-    secondary = Orange,
-    background = MediumGray,
-    onBackground = TextWhite,
-    surface = LightGray,
-    onSurface = TextWhite,
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-)
+private val DarkColorPalette by lazy {
+    darkColors(
+        primary = BrightGreen,
+        primaryVariant = DarkGreen,
+        secondary = Orange,
+        background = MediumGray,
+        onBackground = TextWhite,
+        surface = LightGray,
+        onSurface = TextWhite,
+        onPrimary = Color.White,
+        onSecondary = Color.White,
+    )
+}
 
 private val LightColorPalette = lightColors(
     primary = BrightGreen,

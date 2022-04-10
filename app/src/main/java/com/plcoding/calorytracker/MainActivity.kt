@@ -22,6 +22,7 @@ import com.vmakd1916gmail.com.onboarding_presentation.height.HeightScreen
 import com.vmakd1916gmail.com.onboarding_presentation.nutrient_goal.NutrientGoalScreen
 import com.vmakd1916gmail.com.onboarding_presentation.weight.WeightScreen
 import com.vmakd1916gmail.com.onboarding_presentation.welcome.WelcomeScreen
+import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,8 +66,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-                            NutrientGoalScreen(scaffoldState = scaffoldState,
-                                onNavigate = navController::navigate)
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.ACTIVITY) {
                             ActivityLevelScreen(onNavigate = navController::navigate)
@@ -75,7 +78,9 @@ class MainActivity : ComponentActivity() {
                             GoalScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.TRACKER_OVERVIEW) {
-
+                            TrackerOverviewScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.SEARCH) {
 
