@@ -2,12 +2,14 @@ package com.vmakd1916gmail.com.tracker_presentation.tracker_overview
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.vmakd1916gmail.com.core.util.UiEvent
 import com.vmakd1916gmail.com.core_ui.LocalSpacing
+import com.vmakd1916gmail.com.tracker_presentation.components.ExpandableMeal
 import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.DaySelector
 import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.NutrientsHeader
 import java.nio.file.WatchEvent
@@ -35,9 +37,23 @@ fun TrackerOverviewScreen(
                 onNextDayClick = {
                     viewModel.onEvent(TrackerOverviewEvent.onNextDayClick)
                 },
-                modifier = Modifier.fillMaxWidth().padding(horizontal = spacing.spaceMedium)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = spacing.spaceMedium)
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
+        }
+        items(state.meals) {meal ->
+            ExpandableMeal(
+                meal = meal,
+                onToggleClick = {
+                                viewModel.onEvent(TrackerOverviewEvent.OnToggleMealClick(meal))
+                },
+                content = {
+
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }
