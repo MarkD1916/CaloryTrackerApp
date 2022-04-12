@@ -1,5 +1,6 @@
 package com.vmakd1916gmail.com.tracker_presentation.tracker_overview
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -67,13 +68,13 @@ class TrackerOverviewViewModel @Inject constructor(
                     }
                 )
             }
-            is TrackerOverviewEvent.onNextDayClick -> {
+            is TrackerOverviewEvent.OnNextDayClick -> {
                 state = state.copy(
                     date = state.date.plusDays(1)
                 )
                 refreshFood()
             }
-            is TrackerOverviewEvent.onPreviousDayClick -> {
+            is TrackerOverviewEvent.OnPreviousDayClick -> {
                 state = state.copy(
                     date = state.date.minusDays(1)
                 )
@@ -93,9 +94,10 @@ class TrackerOverviewViewModel @Inject constructor(
                     totalProtein = nutrientsResult.proteinTotal,
                     totalFat = nutrientsResult.fatTotal,
                     totalCalories = nutrientsResult.caloriesTotal,
-                    caloriesGoal = nutrientsResult.carbsGoal,
+                    caloriesGoal = nutrientsResult.caloriesGoal,
                     proteinGoal = nutrientsResult.proteinGoal,
                     fatGoal = nutrientsResult.fatGoal,
+                    carbsGoal = nutrientsResult.carbsGoal,
                     trackedFood = foods,
                     meals = state.meals.map {
                         val nutrientsForMeal =

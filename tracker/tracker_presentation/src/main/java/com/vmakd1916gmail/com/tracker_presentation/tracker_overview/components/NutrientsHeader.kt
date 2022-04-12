@@ -1,6 +1,7 @@
 package com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components
 
 import android.text.Layout
+import android.util.Log
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,6 +32,9 @@ fun NutrientsHeader(
     val spacing = LocalSpacing.current
     val animatedCalorieCount = animateIntAsState(
         targetValue = state.totalCalories
+    )
+    val animatedCalorieGoalCount = animateIntAsState(
+        targetValue = state.caloriesGoal
     )
     Column(
         modifier = modifier
@@ -67,7 +71,7 @@ fun NutrientsHeader(
                     color = MaterialTheme.colors.onPrimary
                 )
                 UnitDisplay(
-                    amount = animatedCalorieCount.value,
+                    amount = animatedCalorieGoalCount.value,
                     unit = stringResource(id = R.string.kcal),
                     amountColor = MaterialTheme.colors.onPrimary,
                     amountTextSize = 40.sp,
@@ -91,6 +95,7 @@ fun NutrientsHeader(
             modifier = modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            Log.d("NutrientsHeader", "NutrientsHeader: ${state.totalCarbs}, ${state.carbsGoal}")
             NutrientBarInfo(
                 value = state.totalCarbs,
                 goal = state.carbsGoal,

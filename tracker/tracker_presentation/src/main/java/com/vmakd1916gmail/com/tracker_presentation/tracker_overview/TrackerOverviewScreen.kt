@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -16,7 +18,6 @@ import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.A
 import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.DaySelector
 import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.NutrientsHeader
 import com.vmakd1916gmail.com.tracker_presentation.tracker_overview.components.TrackedFoodItem
-import java.nio.file.WatchEvent
 
 @Composable
 fun TrackerOverviewScreen(
@@ -26,6 +27,14 @@ fun TrackerOverviewScreen(
     val spacing = LocalSpacing.current
     val state = viewModel.state
     val context = LocalContext.current
+    LaunchedEffect(key1 = context) {
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is UiEvent.Navigate -> onNavigate(event)
+                else -> Unit
+            }
+        }
+    }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -36,10 +45,10 @@ fun TrackerOverviewScreen(
             DaySelector(
                 date = state.date,
                 onPreviousDayClick = {
-                    viewModel.onEvent(TrackerOverviewEvent.onPreviousDayClick)
+                    viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
                 },
                 onNextDayClick = {
-                    viewModel.onEvent(TrackerOverviewEvent.onNextDayClick)
+                    viewModel.onEvent(TrackerOverviewEvent.OnNextDayClick)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -59,7 +68,10 @@ fun TrackerOverviewScreen(
                             .fillMaxWidth()
                             .padding(horizontal = spacing.spaceSmall)
                     ) {
-                        state.trackedFood.forEach { food ->
+                        val foods = state.trackedFood.filter {
+                            it.mealType == meal.mealType
+                        }
+                        foods.forEach { food ->
                             TrackedFoodItem(trackedFood = food, onDeleteClick = {
                                 viewModel.onEvent(
                                     TrackerOverviewEvent

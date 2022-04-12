@@ -1,5 +1,6 @@
 package com.vmakd1916gmail.onboarding_domain.use_case
 
+import android.util.Log
 import com.vmakd1916gmail.com.core.util.UiText
 import com.vmakd1916gmail.com.core.R
 

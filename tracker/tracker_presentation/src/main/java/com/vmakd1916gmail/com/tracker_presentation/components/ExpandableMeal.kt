@@ -78,7 +78,9 @@ fun ExpandableMeal(
                     UnitDisplay(
                         amount = meal.calories,
                         unit = stringResource(id = R.string.kcal),
-                        amountTextSize = 30.sp
+                        amountTextSize = 30.sp,
+                        unitColor = MaterialTheme.colors.onBackground,
+                        amountColor = MaterialTheme.colors.onBackground
                     )
                     Row {
                         NutrientInfo(
