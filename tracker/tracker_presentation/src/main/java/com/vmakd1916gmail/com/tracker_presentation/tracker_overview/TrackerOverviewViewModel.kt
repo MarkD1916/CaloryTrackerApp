@@ -1,6 +1,5 @@
 package com.vmakd1916gmail.com.tracker_presentation.tracker_overview
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -34,6 +33,7 @@ class TrackerOverviewViewModel @Inject constructor(
     private var getFoodsForDateJob: Job? = null
 
     init {
+        refreshFood()
         preferences.saveShouldShowOnboarding(false)
     }
 
